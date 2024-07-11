@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+ul {
+    list-style-type: none;
+}
+body {
+    height: 100vh;
+    overflow: hidden; /* Really just a patch not sure how to make a full screen page */
+}
+/* End of default styling */
+.override-cover, #details {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.178);
+    display: none;
+    z-index: 10;
+    place-content: center;
+}
+#override-cover-list, #details .detailsBox {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(12, 17, 15);
+    border-radius: 8px;
+    color: #aaa;
+}
+#override-cover-list {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 21px;
+}
+#override-cover-list li {
+    width: 100%;
+    text-align: center;
+    padding: 8px 5px;
+}
+#override-cover-list li:hover {
+    background-color: black;
+    color: white;
+}
+#override-cover-list li.Html {
+    color: rgb(74, 129, 74);
+}
+#override-cover-list li.Html:hover {
+    color: rgb(0, 252, 0);
+}
+#details .detailsBox {
+    display: grid;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    padding: 0 6px;
+    font-family: Consolas, 'Courier New', monospace;
+}
+.appbody {
+    background-color: #444;
+    height: 100vh;
+}
+.appheader {
+    display: flex;
+    align-items: center;
+    padding: 6px 3px;
+    color: #d0d0d0; /* Controls the color of the main heading */
+}
+.appheader .editorIcon {
+    display: inline-block;
+    width: 25px;
+    margin: 0 10px;
+    padding: 0px 2px;
+}
+.appheader .appmaintab{
+    display: inline-block;
+}
+.appheader .appmaintab .menu {
+    display: inline-block;
+}
+.appheader .appmaintab .menu span {
+    display: inline-block;
+    padding: 2px 6px;
+}
+.appheader .appmaintab .menu span:hover {
+    background-color: #666;
+    border-radius: 4px;
+}
+.appheader .appmaintab .menu ul {
+    position: absolute;
+    padding: 0px 2px;
+    background-color: #222;
+    border: 1px solid #555;
+    border-radius: 5px;
+    width: 100px;
+    display: none; /* Add this back to clear over lap */
+    z-index: 5;
+}
+.appheader .appmaintab .menu ul li {
+    padding: 5px;
+    border-radius: 7px;
+}
+.appmaintab .menu ul li:first-child {
+    margin-top: 4px;
+}
+.appmaintab .menu ul li:last-child {
+    margin-bottom: 4px;
+}
+.appheader .appmaintab .menu ul li:hover {
+    background-color: rgba(0, 0, 0, 0.3)
+}
+.appheader .rename-form {
+    display: none; /* Change to inline-block with javascript */
+}
+.appheader .rename-form input {
+    background-color: #222;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 4px 3px;
+}
+.appheader .rename-form input:focus {
+    outline: none;
+}
+.appheader .autoIndicator {
+    display: inline-block;
+    font-size: 12px;
+}
+.appheader .autoRunIndicator {
+    display: none;
+}
+.appheader .autoRunIndicator.visible {
+    display: inline-block;
+}
+.appheader .autoIndicator .colorIndicator {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    display: inline-block;
+    border-radius: 50%;
+}
+/* End of header.appheader */
+
+.twoSections {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: calc(100vh - 70px);
+    height: auto;
+}
+.twoSections .sidebar {
+    display: grid;
+    justify-items: center;
+    background-color: rgba(255, 255, 255, 0.226);
+    height: 100vh; /* causes an overshoot but overflow hidden makes it not a problem */
+}
+.twoSections .sidebar img {
+    width: 100%;
+}
+.twoSections .sidebar img:hover, .twoSections .sidebar img:focus {
+    background-color: #aeaeaea2;
+}
+.twoSections #appPlusPreviewMain {
+    display: flex;
+    flex-direction: row;
+}
+.twoSections #appPlusPreviewMain .appmain {
+    background-color: #222;
+    color: #b8b6b6; /* Default color for app main */
+    width: 100%;
+    flex: 1 1 300px;
+}
+.twoSections #appPlusPreviewMain .appmain.fullscreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab ul {
+    margin-right: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab ul li{
+    position: relative;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab ul .cancel {
+    background-color: rgba(255, 255, 255, 0.288);
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    padding: 1px 3px;
+    border-radius: 5px;
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    background-image: url('images/remove.svg');
+    background-size: cover;
+    cursor: pointer;
+    /* display: grid;
+    align-items: center;
+    justify-items: center; */
+}
+.twoSections #appPlusPreviewMain .appmain #codetab ul .cancel:hover {
+    background-color: #ffffff1f;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab ul li {
+    display: inline-block;
+    flex: 0 1 100px; /* Watch out for the flex basis */
+    padding: 8px 0;
+    text-align: center;
+    cursor: pointer;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab ul li.activetab {
+    background-color: rgba(153, 153, 153, 0.253);
+    color: white;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab button {
+    padding: 10px 2px;
+    background-color: inherit;
+    border: none;
+    color: rgb(184, 182, 182);
+    cursor: pointer;
+    margin-right: 7px;
+}
+.twoSections #appPlusPreviewMain .appmain #codetab #runbtn {
+    display: none;
+}
+.twoSections #appPlusPreviewMain .appmain #codeEditor {
+    width: 100%;
+    background-color: #222;
+    color: white;
+    height: 100%;  /* Problem with this height */
+    cursor: text;
+    padding: 8px 5px 11px 10px;
+    font-size: 14px;
+    font-family: Consolas, 'Courier New', monospace;
+    scrollbar-width: thin;
+    scrollbar-color: #555 black;
+    border: none;
+}
+.twoSections #appPlusPreviewMain .appmain #codeEditor:focus {
+    outline: none;
+    border-top: 1px solid rgba(90, 76, 76, 0.548);
+}
+.twoSections #appPlusPreviewMain #iFrameSection {
+    display: none;
+    flex: 1 1 300px;
+}
+.twoSections #appPlusPreviewMain #iFrameSection.visible {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.twoSections #appPlusPreviewMain #iFrameSection.fullscreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.twoSections #appPlusPreviewMain #iFrameSection #iFrameHeader {
+    display: flex;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    border-top: 2px solid #333;
+    background-color: #333;
+    padding: 3px;
+}
+.twoSections #appPlusPreviewMain #iFrameSection #iFrameTitle {
+    width: 100%;
+    color: #aaa;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.twoSections #appPlusPreviewMain #iFrameSection button {
+    background-color: #aaa;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 9px;
+    margin-right: 7px;
+}
+.twoSections #appPlusPreviewMain #iFrameSection button:hover {
+    background-color: #777;
+}
+.twoSections #appPlusPreviewMain #iFrameSection #iFramePreview {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+.twoSections #appPlusPreviewMain #iFrameSection #iFramePreview iframe{
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor || A JavaScript Project</title>
+    <link rel="stylesheet" href="codeEditor.css">
+    <script src="codeEditor.js" defer></script>
+</head>
+
+<body>
+    <div class="override-cover">
+        <ul id="override-cover-list"></ul>
+    </div>
+    <div id="details">
+        <div class="detailsBox"></div>
+    </div>
+    <div class="appbody">
+        <header class="appheader">
+            <img alt="code editor icon" src="images/icon.png" class="editorIcon"><!-- Replace with some sort of logo -->
+            <ul class="appmaintab">
+                <li class="menu filetab" id="filetab"><span>File</span>
+                    <ul class="filedropdown">
+                        <li id="newfile">New File</li>
+                        <li id="openfile">Open File</li>
+                        <li id="savefile">Save</li>
+                        <li id="saveas">Save As</li>
+                        <li id="saveall">Save All</li>
+                        <li id="autosave">Auto Save</li>
+                        <li id="autorun">Auto Run</li>
+                    </ul>
+                </li>
+                <li class="menu edit" id="edittab"><span>Edit</span>
+                    <ul class="editdropdown">
+                        <li id="rename">Rename</li>
+                        <li id="cut">Cut</li>
+                        <li id="copy">Copy</li>
+                        <li id="paste">Paste</li>
+                        <li id="replace">Replace</li>
+                    </ul>
+                </li>
+                <li class="menu help" id="help"><span>Help</span></li>
+                
+            </ul>
+            <form class="rename-form saveas-form">
+                <input id="renameInput" type="text" name="newName">
+                <input id="renameSubmit" type="submit" name="newNameSubmit">
+            </form>
+            <div class="autoSaveIndicator autoIndicator">
+                <span>Auto Save</span>
+                <div class="colorIndicator"></div>
+            </div>
+            <div class="autoRunIndicator autoIndicator">
+                <span>Auto Run</span>
+                <div class="colorIndicator"></div>
+            </div>
+            <!-- Any other menu thing would go here -->
+        </header>
+        <div class="twoSections">
+            <div class="sidebar">
+                <img alt="file details" src="images/more-vertical.svg" class="detailsImage">
+            </div>
+            <div id="appPlusPreviewMain" class="appmain">
+                <div class="appmain">
+                    <div id="codetab">
+                        <ul id="codetablist"></ul>
+                        <button id="viewbtn">View</button>
+                        <button id="runbtn">Run</button>
+                    </div>
+                    <textarea id="codeEditor"></textarea>
+                </div>
+                <div id="iFrameSection">
+                    <header id="iFrameHeader">
+                        <p id="iFrameTitle"></p>
+                        <button id="iFrameClose">Close</button>
+                        <button id="iFrameFullScreen">View</button>
+                    </header>
+                    <div id="iFramePreview"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

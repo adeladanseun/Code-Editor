@@ -225,7 +225,7 @@ function run() {
   if (activeTabName.endsWith(".html")) {
     //save();
     //opens up the iFrame and begins the magic
-    if (activeTabAltered || iFrame.style["display"] === "none") {
+    if (activeTabAltered || iFrame.style["display"] === "none" || iFrame.style['display'] === "") {
       iFrame.style["display"] = "inline-block";
       iFrameView.innerText = "View";
       iFrame.classList.add("visible");
